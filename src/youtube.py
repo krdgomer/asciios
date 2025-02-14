@@ -30,7 +30,7 @@ def play_video(video_url):
         direct_url = info['url']  # Get the direct video URL
 
     # Play the video in VLC
-    subprocess.run([
+    subprocess.Popen([
         "vlc",
         "-f",  # Fullscreen
         "--loop",  # Loop the video
