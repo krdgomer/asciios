@@ -24,7 +24,6 @@ def play_video(video_url, resolution="144p"):
         'format': f'bv[height<={resolution}]+ba',
         'quiet': True,
         'no_warnings': True,
-        'format': 'best',  # Fetch the best available format
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_url}", download=False)
