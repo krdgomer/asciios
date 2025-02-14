@@ -17,13 +17,13 @@ def search_youtube(query):
         info = YoutubeSearch(query, max_results=10).to_dict()
         return [(entry['title'], entry['id']) for entry in info]
 
-def play_video(video_url, resolution="144p"):
+def play_video(video_url):
     """ Use yt_dlp to fetch the direct URL and play it in VLC. """
     # Fetch the direct video URL using yt_dlp
     ydl_opts = {
-        'format': f'bv[height<={resolution}]+ba',
         'quiet': True,
         'no_warnings': True,
+        'format': 'best',  # Fetch the best available format
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_url}", download=False)
